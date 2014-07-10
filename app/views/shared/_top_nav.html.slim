@@ -1,0 +1,13 @@
+.navbar.navbar-default role="navigation"
+  ul.nav.navbar-nav
+    li = link_to "Home", root_path
+    li = link_to "About", about_path
+    li 
+      <a href="#" data-toggle="dropdown"> Menu <span class="caret"></span></a>
+      ul.dropdown-menu roll="menu" aria-labelledby="dLabel"
+        li
+          a href="#" All Items
+        li
+          a href="#" Vegetarian
+
+    li = link_to "Contact", contact_path 
