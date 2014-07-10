@@ -1,2 +1,28 @@
 h1.page-header Contact Us
 p.lead Just shoot us a note and we'll get back when we can!
+
+= form_tag(submit_contact_path, roll: 'form', class: 'form-horizontal') do
+  .form-group
+    label for="name" class="col-sm-2 control-label" Name
+    .col-sm-10
+      = text_field_tag(:name, '', class: 'form-control', placeholder: 'Name')
+
+  .form-group
+    label for="name" class="col-sm-2 control-label" Email
+    .col-sm-10
+      = text_field_tag(:email, '', class: 'form-control', placeholder: 'Email')
+
+  .form-group
+    label for="subject" class="col-sm-2 control-label" Subject
+    .col-sm-10
+      = text_field_tag(:subject, '', class: 'form-control', placeholder: 'Subject')
+
+  .form-group
+    label for="question" class="col-sm-2 control-label" Question
+    .col-sm-10
+      = text_area_tag(:question, '', class: 'form-control', placeholder: 'Question')
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = submit_tag('Send', class: 'btn btn-info btn-lg')
+  
