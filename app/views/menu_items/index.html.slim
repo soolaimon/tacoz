@@ -13,3 +13,5 @@ p.lead Tacos so yummy you'll slap you mama.
             p = number_to_currency(menu_item.price)
           .panel-footer.text-center
             = link_to "See More", menu_item_path(menu_item), class: "btn btn-success"
+
+= paginate(@items)
