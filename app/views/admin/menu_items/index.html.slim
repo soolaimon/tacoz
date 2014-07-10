@@ -1,0 +1,15 @@
+- @menu_items.in_groups_of(4) do |group|
+  .row
+    - group.each do |menu_item|
+      .col-sm-3
+        .panel
+          .panel-header
+            = image_tag(menu_item.picture.url(:small), width: '100%')
+          .panel-body
+            h3 = menu_item.name
+            p = number_to_currency(menu_item.price)
+          .panel-footer.text-center
+            = link_to "See More", admin_menu_item_path(menu_item), class: "btn btn-success"
+            = link_to "Delete", [:admin, menu_item], class: "btn btn-danger", method: :delete, "data-confirm" => "Are you sure?"
+
+= paginate(@menu_items)

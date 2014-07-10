@@ -1,0 +1,25 @@
+@import 'bootstrap';
+
+$background-blue: #3db6db;
+$nav-color: lighten(complement($background-blue), 15%);
+
+body {
+  background-color: $background-blue;
+}
+
+.navbar {
+  background-color: $nav-color;
+}
+
+
+#site-header {
+  padding: 20px, 0;
+  margin-bottom: 20px;
+}
+
+#site-footer {
+  border-top: 1px solid black;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+

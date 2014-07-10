@@ -6,9 +6,11 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
   body
+    p.notice = notice
+    p.alert = alert
     .container
       header#site-header
-        = link_to(image_tag('http://placehold.it/100x100'), root_path)
+        = link_to(image_tag('logo.jpg'), root_path, class: "logo")
         = render "shared/top_nav"        
 
       section#site-content
