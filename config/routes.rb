@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/contact-submit' => 'site#contact_submit', as: :submit_contact
   get '/vegetarian-food' => 'menu_items#vegetarian'
   resources :menu_items, only: [:index, :show], path: 'our-food'
+  resources :locations, only: [:index, :show]
 
   namespace :admin do
     get "/" => "base#index"
@@ -14,4 +15,3 @@ Rails.application.routes.draw do
   end
 
 end
-
