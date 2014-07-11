@@ -1,9 +1,13 @@
 h1 Our Locations
+.row
+  .col-sm-12
+    #full-map
+
 - @locations.in_groups_of(4, false) do |group|
   .row
     - group.each do |location|
       .col-sm-3
         address #{location.street_address} #{location.street_address2} #{location.city}, #{location.state} #{location.zip}
-
+  
         = link_to "View Map", location_path(location)
 

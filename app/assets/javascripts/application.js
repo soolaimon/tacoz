@@ -21,7 +21,7 @@ $(document).ready(function() {
 });
 
 var loadMap = function () {
-  $map = $('#map');
+  var $map = $('#map');
   if($map.length) {
     var gmap = new GMaps({
       div: '#map',
@@ -33,10 +33,32 @@ var loadMap = function () {
       lat: $map.data('lat'),
       lng: $map.data('lon'),
       title: "Tacoz",
-      click: function(e) {
-        alert('This is the place');
+      infoWindow: {
+        content: "<p>" + $map.data('address') +"</p>"
       }
     });
+  }
 
+  $fullMap = $('#full-map');
+  if ($fullMap.length) {
+    $.getJSON(('/locations.json'), function (locations) {
+      var defaultLocation = locations[0];
+      var gmap = new GMaps({
+        div: '#full-map',
+        lat: defaultLocation.latitude,
+        lng: defaultLocation.longitude
+      });
+
+      $(locations).each(function(index, location) {
+        gmap.addMarker({
+          lat: location.latitude,
+          lng: location.longitude,
+          title: 'Tacoz',
+          infoWindow: {
+            content: '<p>' + location.address + '</p>'
+          }
+        });
+      });
+    });
   }
 };
