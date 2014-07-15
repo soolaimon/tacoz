@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get "/" => "base#index"
     
     resources :menu_items
+    resources :locations
   end
 
 end
