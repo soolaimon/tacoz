@@ -10,6 +10,18 @@
   .form_group
     = f.text_field :zip, placeholder: "Zip", class: "form-control"
   br
+
+  p = f.link_to_add "Add Employee", :employees, class: 'btn btn-success'
+  = f.fields_for(:employees) do |employee_form| 
+    .form_group
+      = employee_form.text_field :name, placeholder: "Name", class: "form-control"
+    .form_group
+      = employee_form.number_field :salary, placeholder: "Salary", class: "form-control"
+    .form_group
+      = employee_form.link_to_remove "Remove Employee", class: "btn btn-danger"
+
+
+  br
   .form_group
     = f.submit "Save Location", class: "btn btn-primary btn-lg"
 

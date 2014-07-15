@@ -7,6 +7,9 @@ h1 Our Locations
     - group.each do |location|
       .col-sm-3
         address #{location.street_address} #{location.street_address2} #{location.city}, #{location.state} #{location.zip}
+
+      .col-sm-3
+        = link_to 'Edit', edit_admin_location_path(location), class: "btn btn-success"
   
-        = link_to "View Map", location_path(location)
+        = link_to "View Map", location_path(location), class: "btn btn-primary"
 

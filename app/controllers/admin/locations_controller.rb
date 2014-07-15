@@ -21,9 +21,22 @@ class Admin::LocationsController < AdminController
     end
   end
 
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:id])
+    if @location.update_attributes(location_params)
+      redirect_to admin_locations_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def location_params
-    params.require(:location).permit(:street_address, :street_address2, :city, :state, :zip, :latitude, :longitude)
+    params.require(:location).permit(:street_address, :street_address2, :city, :state, :zip, :latitude, :longitude, employees_attributes: [:name, :salary, :id, :_destroy])
   end
 end
