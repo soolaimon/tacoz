@@ -1,19 +1,28 @@
-= form_for [:admin, @menu_item] do |f|
+= nested_form_for [:admin, @menu_item] do |f|
   .form-group
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: "form-control"
   .form-group
     = f.label :price
-    = f.number_field :price
+    = f.number_field :price, class: "form-control"
   .form-group
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, class: "form-control"
   .form-group
     = f.label :vegetarian
-    = f.check_box :vegetarian
+    = f.check_box :vegetarian, class: "form-control"
   .form-group
     = f.label :picture
     = f.file_field :picture
+
+  p = f.link_to_add "Add Ingredient", :ingredients
+  = f.fields_for(:ingredients) do |ingredient_form|
+    .form-group
+      = ingredient_form.text_field(:name, placeholder: "Name", class: "form-control")
+    .form-group
+      = ingredient_form.number_field(:calories, placeholder: "Calories", class: "form-control")
+    p = ingredient_form.link_to_remove("Remove Ingredient")
+
   .form-group
     = f.submit "Save Item"
 

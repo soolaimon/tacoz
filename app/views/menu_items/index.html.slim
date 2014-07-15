@@ -1,7 +1,7 @@
 h1.page-header Our Food
 p.lead Tacos so yummy you'll slap you mama.
 
-- @items.in_groups_of(4) do |group|
+- @items.in_groups_of(4, false) do |group|
   .row
     - group.each do |menu_item|
       .col-sm-3
