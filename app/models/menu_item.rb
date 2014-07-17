@@ -1,4 +1,11 @@
 class MenuItem < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:name, :description, :ingredient_names]
+
+  # pg_search_scope :search, against: [:name, :description], associated_against: {
+  #   ingredients: [:name]
+  #   }
+
   mount_uploader :picture, MenuItemPictureUploader
   has_many :ingredients
   # We need this for nested forms. This saves ingredients when we save a menu item
@@ -22,5 +29,9 @@ class MenuItem < ActiveRecord::Base
 
   def has_blank_attributes(ingredient_attrs)
     ingredient_attrs['name'].blank?
+  end
+
+  def ingredient_names
+    ingredients.pluck(:name)
   end
 end

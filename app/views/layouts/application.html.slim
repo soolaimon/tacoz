@@ -11,7 +11,11 @@ html
     p.alert = alert
     .container
       header#site-header
-        = link_to(image_tag('logo.jpg'), root_path, class: "logo")
+        .row
+          .col-sm-4
+            = link_to(image_tag('logo.jpg'), root_path, class: "logo")
+          .col-sm-8
+            = render "shared/topsearch"
         = render "shared/top_nav"        
 
       section#site-content

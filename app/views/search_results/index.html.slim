@@ -1,0 +1,7 @@
+h1.page-header Search Results for #{params[:q]}
+p Found #{pluralize(@results.length, 'result')}
+- @results.each do |result|
+  - if result.is_a?(Location)
+    = link_to(result.address, result)
+  - else   
+    = link_to(result.name, result)
