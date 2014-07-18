@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'nested_form'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'pg'
 gem 'pg_search'
 gem 'sass-rails', '~> 4.0.3'
@@ -26,6 +28,7 @@ gem 'uglifier', '>= 1.3.0'
 # development gems
 
 group :development do
+  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'spring'
 end
@@ -36,7 +39,6 @@ end
 
 # test gems
 group :test do
-
 end
 
 # production gems
