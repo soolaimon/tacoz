@@ -1,5 +1,6 @@
 class MenuItem < ActiveRecord::Base
   include PgSearch
+  include Indexable
   multisearchable against: [:name, :description, :ingredient_names]
 
   # pg_search_scope :search, against: [:name, :description], associated_against: {
@@ -16,6 +17,7 @@ class MenuItem < ActiveRecord::Base
       ingredients.build
     end
   end
+
 
   def to_param
     "#{id}-#{name.parameterize}"
@@ -34,4 +36,5 @@ class MenuItem < ActiveRecord::Base
   def ingredient_names
     ingredients.pluck(:name)
   end
+
 end

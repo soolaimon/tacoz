@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   include PgSearch
+  include Indexable
   multisearchable against: [:street_address, :city, :state, :zip]
 
   geocoded_by :address
@@ -9,6 +10,7 @@ class Location < ActiveRecord::Base
   after_initialize :add_employee
 
   # pg_search_scope :search, against: [:street_address, :city, :state, :zip]
+
   
 
   def address
@@ -16,7 +18,9 @@ class Location < ActiveRecord::Base
   end
 
   private
+  
   def add_employee
     employees.build if employees.empty?
   end
+
 end
